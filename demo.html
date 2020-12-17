@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+  overflow: hidden;
+}
+ul li {
+  width: 50px;
+  height: 50px;
+  background: red;
+  float: left;
+  margin-right: 10px;
+}
+
+#old li:nth-child(1) {
+  background-color: #53a8ff;
+}
+#old li:nth-child(2) {
+  background-color: #66b1ff;
+}
+#old li:nth-child(3) {
+  background-color: #79bbff;
+}
+#old li:nth-child(4) {
+  background-color: #8cc5ff;
+}
+#old li:nth-child(5) {
+  background-color: #a0cfff;
+}
+#old li:nth-child(6) {
+  background-color: #b3d8ff;
+}
+</style>
+<body>
+<div id="old">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<div style="margin-top: 16px;">
+  <input id="color" type="text">
+  <button id="btn">转换颜色</button>
+</div>
+</body>
+<script type="text/javascript" src="./colorProcessing.js"></script>
+<script type="text/javascript">
+  
+let oldColor = '#409EFF';
+
+function toNewColor (oldColor, newColor) {
+  const colorProcessing = new ColorProcessing(oldColor);
+  const colorObj = colorProcessing.getThemeCluster(new ColorProcessing(newColor));
+
+  const { oldColors, newColors } = colorObj;
+
+  const styles = document.querySelectorAll('style');
+  styles.forEach((style) => {
+    oldColors.forEach((old, index) => {
+      style.innerText = style.innerText.replace(new RegExp(old, 'ig'), newColors[index]);
+    })
+  })
+}
+
+document.getElementById('btn').onclick = function () {
+  const color = document.getElementById('color').value;
+  toNewColor(oldColor, color);
+  oldColor = color;
+}
+</script>
+</html>

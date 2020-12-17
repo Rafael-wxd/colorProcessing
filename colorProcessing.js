@@ -241,3 +241,6 @@ class ColorProcessing {
     return this['$' + key];
   }
 });
+
+// vue/node等可解开导入使用
+// export default ColorProcessing;

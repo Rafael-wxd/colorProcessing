@@ -1,6 +1,6 @@
 ## 颜色转换插件
 
-可以通过传入hex/rgba/rgb/hsb获取hex, rgba, hsb三种颜色 获取一个颜色透明的颜色
+可以通过传入hex/rgba/rgb/hsb获取hex, rgba, hsb三种颜色
 
 ### ColorProcessing使用
 
